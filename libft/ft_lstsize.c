@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 15:21:20 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/05 21:24:26 by mjabane          ###   ########.fr       */
+/*   Created: 2022/03/05 18:28:10 by mjabane           #+#    #+#             */
+/*   Updated: 2022/03/05 18:30:01 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+int	ft_lstsize(t_list *lst)
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
+	int	n;
+
+	n = 0;
+	while (lst)
+	{
+		n++;
+		lst = lst->next;
+	}
+	return (n);
 }

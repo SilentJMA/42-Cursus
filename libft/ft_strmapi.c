@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 15:21:20 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/05 21:24:26 by mjabane          ###   ########.fr       */
+/*   Created: 2022/03/05 21:04:25 by mjabane           #+#    #+#             */
+/*   Updated: 2022/03/05 21:22:53 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
+	char	*str;
+	int		i;
+
+	i = -1;
+	str = ft_strdup(s);
+	if (!str)
+		return (NULL);
+	while (str[++i])
+		str[i] = (*f)(i, str[i]);
+	return (str);
 }
