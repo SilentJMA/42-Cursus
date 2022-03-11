@@ -6,7 +6,7 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 20:17:33 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/05 20:26:10 by mjabane          ###   ########.fr       */
+/*   Updated: 2022/03/07 08:28:15 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	int		a;
-	int		b;
+	size_t	general_size;
 	char	*ptr;
+	char	*save_ptr;
 
-	a = ft_strlen(s1);
-	b = ft_strlen(s2);
-	i = -1;
-	ptr = malloc(sizeof(char) * (a + b));
+	if (!s1 || !s2)
+		return (0);
+	general_size = ft_strlen(s1) + ft_strlen(s2);
+	ptr = (char *)malloc(general_size + 1);
 	if (!ptr)
-		return (NULL);
-	while (++i < a)
-		ptr[i] = s1[i];
-	i--;
-	while (++i - a < b)
-		ptr[i] = s2[i - a];
-	ptr[i] = '\0';
-	return (ptr);
+		return (ptr);
+	save_ptr = ptr;
+	while (*s1)
+		*ptr++ = *s1++;
+	while (*s2)
+		*ptr++ = *s2++;
+	*ptr = '\0';
+	return (save_ptr);
 }

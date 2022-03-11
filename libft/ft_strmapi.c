@@ -6,7 +6,7 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 21:04:25 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/05 21:22:53 by mjabane          ###   ########.fr       */
+/*   Updated: 2022/03/07 08:30:32 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,20 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str;
+	char	*ptr;
 	int		i;
 
-	i = -1;
-	str = ft_strdup(s);
-	if (!str)
-		return (NULL);
-	while (str[++i])
-		str[i] = (*f)(i, str[i]);
-	return (str);
+	if (!s || !f)
+		return (0);
+	ptr = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!ptr)
+		return (ptr);
+	i = 0;
+	while (s[i])
+	{
+		ptr[i] = f(i, s[i]);
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 20:08:51 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/06 10:18:16 by mjabane          ###   ########.fr       */
+/*   Updated: 2022/03/07 08:40:07 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 char	*ft_strdup(const char *s1)
 {
-	char	*copy;
-	int		len;
-	int		i;
+	size_t	size;
+	char	*ptr;
+	char	*tmp;
 
-	len = ft_strlen(s1);
-	copy = (char *)malloc(sizeof(char) * len + 1);
-	if (!copy)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		copy[i] = s1[i];
-		i += 1;
-	}
-	copy[i] = '\0';
-	return (copy);
+	size = ft_strlen(s1);
+	ptr = malloc(size + 1);
+	tmp = ptr;
+	if (ptr == 0)
+		return (ptr);
+	while (*s1)
+		*ptr++ = *s1++;
+	*ptr = '\0';
+	return (tmp);
 }

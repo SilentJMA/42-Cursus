@@ -6,7 +6,7 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 17:59:30 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/05 18:06:10 by mjabane          ###   ########.fr       */
+/*   Updated: 2022/03/07 08:41:17 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,22 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
 	char	*ptr;
+	char	*tmp;
 
-	if (!s)
-		return (NULL);
-	if (ft_strlen(s + start) < len)
-		len = ft_strlen(s + start);
-	if (ft_strlen(s) <= start)
-		len = 0;
-	ptr = (char *)malloc((len + 1) * sizeof(char));
+	ptr = (char *)malloc(len + 1);
+	if (s == 0)
+		return (0);
 	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (i < len)
+		return (ptr);
+	tmp = ptr;
+	if (start < (ft_strlen(s)))
 	{
-		ptr[i] = s[start + i];
-		i++;
+		while (start-- != 0)
+			s++;
+		while ((len-- != 0) && *s)
+			*ptr++ = *s++;
 	}
-	ptr[i] = 0;
-	return (ptr);
+	*ptr = '\0';
+	return (tmp);
 }

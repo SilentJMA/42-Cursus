@@ -6,93 +6,86 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 19:31:42 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/05 20:06:30 by mjabane          ###   ########.fr       */
+/*   Updated: 2022/03/07 08:31:02 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_is_charset(char str, char *charset)
+static void	exit_free(char **ptr)
 {
-	while (*charset)
+	char	**save_ptr;
+
+	save_ptr = ptr;
+	while (*ptr)
 	{
-		if (str == *charset)
-			return (1);
-		charset++;
+		free(*ptr);
+		ptr++;
 	}
+	free(save_ptr);
+}
+
+static int	set_words(char **ptr, char const *s, char c)
+{
+	char	*start;
+	char	*end;
+	char	*save_s;
+
+	save_s = (char *)s;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (*s != c && *s != '\0')
+		{
+			start = (char *)s;
+			while (*s != c && *s != '\0')
+				s++;
+			end = (char *)s - 1;
+			*ptr = ft_substr(save_s, start - save_s, end - start + 1);
+			if (*ptr == 0)
+				return (1);
+			ptr++;
+		}
+	}
+	*ptr = 0;
 	return (0);
 }
 
-static int	ft_wordlen(char *str, char *charset)
+size_t	count_words(char const *s, char c)
 {
-	int	i;
+	size_t	count;
 
-	i = 0;
-	while (str[i] && ft_is_charset(str[i], charset) == 0)
-		i++;
-	return (i);
-}
-
-static int	ft_wordcount(char *str, char *charset)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	while (*str)
+	count = 0;
+	while (*s)
 	{
-		while (*str && ft_is_charset(*str, charset) == 1)
-			str++;
-		i = ft_wordlen(str, charset);
-		str += i;
-		if (i)
-		j++;
+		while (*s == c)
+			s++;
+		if (*s != c && *s != '\0')
+			count++;
+		while (*s != c && *s != '\0')
+			s++;
 	}
-	return (j);
-}
-
-static char	*ft_strdupp(char *src, int j)
-{
-	char	*dst;
-	int		i;
-
-	i = 0;
-	dst = malloc((j + 1) * sizeof(char));
-	if (!dst)
-		return (0);
-	while (i < j && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
+	return (count);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char		**dest;
-	int			size;
-	int			i;
-	int			j;
-	char		charset[2];
+	char	**ptr;
+	size_t	word_number;
+	size_t	succesfull_allocs;
 
-	charset[0] = c;
-	charset[1] = '\0';
-	i = 0;
-	size = ft_wordcount((char *)s, charset);
-	dest = malloc((size + 1) * sizeof(char *));
-	if (!dest)
+	if (!s)
 		return (0);
-	while (i < size)
+	word_number = count_words(s, c);
+	succesfull_allocs = 0;
+	ptr = (char **)malloc((word_number + 1) * sizeof(char *));
+	if (!ptr)
+		return (0);
+	if (set_words(ptr, s, c))
 	{
-		while (ft_is_charset((char)*s, charset))
-			s++;
-		j = ft_wordlen((char *)s, charset);
-		dest[i] = ft_strdupp((char *)s, j);
-		s += j;
-		i++;
+		exit_free(ptr);
+		return (0);
 	}
-	dest[size] = 0;
-	return (dest);
+	return (ptr);
 }

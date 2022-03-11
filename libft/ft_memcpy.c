@@ -6,7 +6,7 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 19:56:46 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/03 10:43:35 by mjabane          ###   ########.fr       */
+/*   Updated: 2022/03/07 08:26:48 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,23 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	i;
-	char	*d;
-	char	*s;
+	unsigned char		*dst_ptr;
+	unsigned char		*src_ptr;
+	size_t				count;
 
-	d = dst;
-	s = (char *)src;
-	i = -1;
-	while (++i < n)
-		*(d + i) = *(s + i);
+	count = 0;
+	dst_ptr = (unsigned char *)dst;
+	src_ptr = (unsigned char *)src;
+	if ((n != 0) && (dst != src))
+	{
+		while (count < n)
+		{
+			*dst_ptr = *src_ptr;
+			dst_ptr++;
+			src_ptr++;
+			count++;
+		}
+	}
 	return (dst);
 }
 

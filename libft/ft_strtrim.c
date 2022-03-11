@@ -6,42 +6,75 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 21:20:34 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/05 21:20:37 by mjabane          ###   ########.fr       */
+/*   Updated: 2022/03/07 08:29:46 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_char_in_set(char c, char const *set)
+static int	is_char_oneofset(char const *set, char c)
 {
-	int	i;
-
-	i = -1;
-	while (set[++i])
-		if (set[i] == c)
-			return (1);
+	if (ft_strchr(set, (int)c))
+		return (1);
 	return (0);
+}
+
+static char	*get_first_pos(char const *s1, char const *set)
+{
+	while (*s1)
+	{
+		if (is_char_oneofset(set, *s1))
+		{
+			s1++;
+			continue ;
+		}
+		break ;
+	}
+	return ((char *)s1);
+}
+
+static char	*get_last_pos(char const *s1, char const *set)
+{
+	char	*save_s1;
+
+	save_s1 = (char *)s1;
+	if (*s1)
+	{
+		while (*s1)
+			s1++;
+		s1--;
+	}
+	while (s1 >= save_s1 && *s1)
+	{
+		if (is_char_oneofset(set, *s1))
+		{
+			s1--;
+			continue ;
+		}
+		break ;
+	}
+	return ((char *)s1);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
-	int		i;
-	int		start;
-	int		end;
+	char	*ptr;
+	char	*first_pos;
+	char	*last_pos;
 
-	start = 0;
-	while (s1[start] && ft_char_in_set(s1[start], set))
-		start++;
-	end = ft_strlen(s1);
-	while (end > start && ft_char_in_set(s1[end - 1], set))
-		end--;
-	str = (char *)malloc(sizeof(*s1) * (end - start + 1));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (start < end)
-		str[i++] = s1[start++];
-	str[i] = 0;
-	return (str);
+	ptr = 0;
+	if (!s1 || !set)
+		return (0);
+	first_pos = get_first_pos(s1, set);
+	if (*first_pos == '\0')
+	{
+		ptr = (char *)malloc(1);
+		*ptr = '\0';
+		return (ptr);
+	}
+	last_pos = get_last_pos(s1, set);
+	ptr = ft_substr(s1, first_pos - s1, (last_pos - first_pos + 1));
+	if (!ptr)
+		return (ptr);
+	return (ptr);
 }

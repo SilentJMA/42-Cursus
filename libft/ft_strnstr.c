@@ -6,7 +6,7 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 21:19:50 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/05 21:19:54 by mjabane          ###   ########.fr       */
+/*   Updated: 2022/03/07 08:27:15 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,28 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	l2;
+	const char	*oneedle;
+	const char	*save_haystack;
+	size_t		save_len;
 
-	if ((int)len == -1 && ft_strlen(haystack) == 0 && ft_strlen(needle) != 0)
-		return (0);
-	if (len < 0)
-		return (0);
-	l2 = ft_strlen(needle);
-	if (!l2)
+	oneedle = needle;
+	if (*needle == '\0')
 		return ((char *)haystack);
-	while (len-- >= l2)
+	while (len && *haystack)
 	{
-		if (!ft_memcmp(haystack, needle, l2))
-			return ((char *)haystack);
+		if (*haystack == *needle)
+		{
+			save_haystack = haystack;
+			save_len = len;
+			while ((*haystack++ == *needle++) && (len-- != 0))
+				if (*needle == 0)
+					return ((char *)save_haystack);
+			haystack = save_haystack;
+			len = save_len;
+			needle = oneedle;
+		}
+		len--;
 		haystack++;
 	}
-	return (NULL);
+	return (0);
 }

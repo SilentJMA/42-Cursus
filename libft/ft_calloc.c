@@ -6,7 +6,7 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 11:03:09 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/06 10:15:26 by mjabane          ###   ########.fr       */
+/*   Updated: 2022/03/10 11:13:04 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	unsigned char	*ptr;
+	void	*ptr;
 
-	ptr = (unsigned char *)malloc(sizeof(size) * count);
-	if (!ptr)
+	ptr = malloc(count * size);
+	if (ptr == 0)
+	{
 		return (NULL);
-	ft_memset(ptr, 0, count);
-	return ((void *)ptr);
+	}
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }
