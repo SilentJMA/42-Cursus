@@ -6,7 +6,7 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 10:49:42 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/02 15:50:04 by mjabane          ###   ########.fr       */
+/*   Updated: 2022/03/23 19:10:04 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ char	*ft_strchr(const char *s, int c)
 	while (++i < (int) ft_strlen(s) + 1)
 		if (*(s + i) == (char)c)
 			return ((char *)s + i);
-	return (NULL);
+	return (0);
 }
