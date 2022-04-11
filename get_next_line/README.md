@@ -7,11 +7,11 @@
 </p>
 
 <p align="center">
-	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/jdecorte-be/42-Get-next-line?color=lightblue" />
-	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/jdecorte-be/42-Get-next-line?color=critical" />
-	<img alt="Code language count" src="https://img.shields.io/github/languages/count/jdecorte-be/42-Get-next-line?color=yellow" />
-	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/jdecorte-be/42-Get-next-line?color=blue" />
-	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jdecorte-be/42-Get-next-line?color=green" />
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/SilentJMA/42-Cursus/42_next_line?color=lightblue" />
+	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/SilentJMA/42-Cursus/42_next_line?color=critical" />
+	<img alt="Code language count" src="https://img.shields.io/github/languages/count/SilentJMA/42-Cursus/42_next_line?color=yellow" />
+	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/SilentJMA/42-Cursus/42_next_line?color=blue" />
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/SilentJMA/42-Cursus/42_next_line?color=green" />
 </p>
 
 <h3 align="center">
@@ -34,7 +34,7 @@
 	on manipulating files for data management and persistence.
 	This project consists of coding a function that returns one line at a time from a text file.
 
-For more detailed information, look at the [**subject of this project**](https://github.com/jdecorte-be/42-Get-next-line/blob/master/en.subject.pdf).
+For more detailed information, look at the [**subject of this project**](https://github.com/SilentJMA/42-Cursus/42_next_line/blob/master/en.subject.pdf).
 
 
 ## 🛠️ Usage
