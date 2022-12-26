@@ -6,13 +6,13 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 10:20:46 by mjabane           #+#    #+#             */
-/*   Updated: 2022/03/23 19:11:15 by mjabane          ###   ########.fr       */
+/*   Updated: 2022/12/14 09:36:51 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void SignSpace(char **str, int *sign)
+static	void	signspace(char **str, int *sign)
 {
 	while ((**str == ' ') || ((**str >= 9) && (**str <= 13)))
 		(*str)++;
@@ -33,7 +33,7 @@ int	ft_atoi(const char *s)
 	str = (char *)s;
 	sign = 1;
 	number = 0;
-	SignSpace(&str, &sign);
+	signspace(&str, &sign);
 	while ((*str >= '0') && (*str <= '9'))
 	{
 		if (number > 2147483647 / 10 || (number == 2147483647 / 10
