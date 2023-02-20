@@ -6,7 +6,7 @@
 #    By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 19:12:47 by mjabane           #+#    #+#              #
-#    Updated: 2023/02/20 17:59:41 by mjabane          ###   ########.fr        #
+#    Updated: 2023/02/20 18:04:49 by mjabane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,11 @@ OBJS_DIR = objs/
 OBJS = $(SRCS:.c=.o)
 OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
 
-CC = gcc
-
 CC_FLAGS = -Wall -Wextra -Werror -c
 
 $(OBJS_DIR)%.o : %.c ft_printf.h
 	@mkdir -p $(OBJS_DIR)
-	@gcc $(CC_FLAGS) $< -o $@
+	$(CC) $(CC_FLAGS) $< -o $@
 
 $(NAME): $(OBJECTS_PREFIXED)
 	@ar rc $(NAME) $(OBJECTS_PREFIXED)
