@@ -1,18 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 15:06:06 by mjabane           #+#    #+#             */
-/*   Updated: 2022/05/07 17:57:12 by mjabane          ###   ########.fr       */
+/*   Created: 2022/04/13 15:07:03 by mjabane           #+#    #+#             */
+/*   Updated: 2023/02/19 11:03:25 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_putnbr(int n)
 {
-	return (write(1, &c, 1));
+	int	t;
+
+	t = 0;
+	if (n == -2147483648)
+		return (write(1, "-2147483648", 11));
+	if (n < 0)
+	{
+		t += ft_putchar('-');
+		n = -n;
+	}
+	if (n > 9)
+		t += ft_putnbr(n / 10);
+	t += ft_putchar(n % 10 + '0');
+	return (t);
+}
+
+unsigned int	ft_putnbr_u(unsigned int n)
+{
+	int	t;
+
+	t = 0;
+	if (n > 9)
+		t += ft_putnbr(n / 10);
+	t += ft_putchar(n % 10 + '0');
+	return (t);
 }

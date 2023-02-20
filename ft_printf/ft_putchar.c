@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 15:07:03 by mjabane           #+#    #+#             */
-/*   Updated: 2022/05/07 17:56:50 by mjabane          ###   ########.fr       */
+/*   Created: 2022/04/13 15:06:06 by mjabane           #+#    #+#             */
+/*   Updated: 2023/02/19 11:03:13 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-int	ft_putstr(char *s)
+int	ft_putchar(char c)
 {
-	int	n;
-
-	n = 0;
-	if (s == NULL)
-		n += ft_putstr("(null)");
-	else
-		while (s[n])
-			ft_putchar(s[n++]);
-	return (n);
+	return (write(1, &c, 1));
 }

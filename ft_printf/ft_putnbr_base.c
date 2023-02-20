@@ -6,11 +6,11 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 15:07:03 by mjabane           #+#    #+#             */
-/*   Updated: 2022/05/07 17:56:58 by mjabane          ###   ########.fr       */
+/*   Updated: 2023/02/19 11:03:21 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 static int	ft_check_base(char *base, char c)
 {
