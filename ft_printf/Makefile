@@ -24,11 +24,11 @@ OBJS_DIR = objs/
 OBJS = $(SRCS:.c=.o)
 OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
 
-CC_FLAGS = -Wall -Wextra -Werror -c
+CFLAGS = -Wall -Wextra -Werror -c
 
 $(OBJS_DIR)%.o : %.c ft_printf.h
 	@mkdir -p $(OBJS_DIR)
-	$(CC) $(CC_FLAGS) $< -o $@
+	$(CC) $(CFLAGS) $< -o $@
 
 $(NAME): $(OBJECTS_PREFIXED)
 	@ar rc $(NAME) $(OBJECTS_PREFIXED)
