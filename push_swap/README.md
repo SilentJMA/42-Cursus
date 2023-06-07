@@ -7,11 +7,11 @@
 </p>
 
 <p align="center">
-	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/SilentJMA/42-Cursus/new/main/push_swap?color=blueviolet" />
-	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/SilentJMA/42-Cursus/new/main/push_swap?color=blueviolet" />
-	<img alt="Code language count" src="https://img.shields.io/github/languages/count/SilentJMA/42-Cursus/new/main/push_swap?color=blue" />
-	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/SilentJMA/42-Cursus/new/main/push_swap?color=blue" />
-	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/SilentJMA/42-Cursus/new/main/push_swap?color=brightgreen" />
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/SilentJMA/42-Cursus/tree/main/push_swap?color=blueviolet" />
+	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/SilentJMA/42-Cursus/tree/main/push_swap?color=blueviolet" />
+	<img alt="Code language count" src="https://img.shields.io/github/languages/count/SilentJMA/42-Cursus/tree/main/push_swap?color=blue" />
+	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/SilentJMA/42-Cursus/tree/main/push_swap?color=blue" />
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/SilentJMA/42-Cursus/tree/main/push_swap?color=brightgreen" />
 </p>
 
 ---
