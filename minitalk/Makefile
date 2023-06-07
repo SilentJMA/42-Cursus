@@ -6,39 +6,35 @@
 #    By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/22 18:27:45 by mjabane           #+#    #+#              #
-#    Updated: 2023/06/07 12:36:42 by mjabane          ###   ########.fr        #
+#    Updated: 2023/06/08 00:19:23 by mjabane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFILES	= server.c client.c server_utils.c
+OFILES	= $(CFILES:.c=.o)
+CLIENT	= client
+SERVER 	= server
+CC		= cc
+CFLAGS	= -Wall -Wextra -Werror
+NAME	= minitalk.a
+RM		= rm -rf
 
-CLIENT = client
-SERVER = server
+all				:	$(SERVER) $(CLIENT)
 
-SRCS_C = client.c \
-			server_utils.c \
+$(SERVER)		: $(NAME) minitalk.h
+	@$(CC) $(CFLAGS) $(NAME) server.c -o $(SERVER)
 
-SRCS_S = server.c \
-			server_utils.c \
+$(CLIENT)		: $(NAME) minitalk.h
+	@$(CC) $(CFLAGS) $(NAME) client.c -o $(CLIENT)
 
-OBJS_C = $(SRCS_C:%.c=%.o)
+$(NAME)			: $(OFILES)
+	@ar -cr $(NAME) $(OFILES)
 
-OBJS_S = $(SRCS_S:%.c=%.o)
+clean 			:
+	@$(RM) $(OFILES) $(BOFILES)
 
-all: $(SERVER) $(CLIENT)
+fclean			: clean
+	@$(RM) $(NAME)
+	@$(RM) $(SERVER) $(CLIENT)
 
-$(CLIENT) : $(OBJS_C)
-	CC -o $@ $^ $(CFLAGS)
-
-$(SERVER) : $(OBJS_S)
-	CC -o $@ $^ $(CFLAGS)
-
-clean:
-	rm -f $(OBJS_C) $(OBJS_S)
-
-fclean:
-	rm -f $(CLIENT) $(SERVER)
-
-re:
-	fclean all
+re 				: fclean all
