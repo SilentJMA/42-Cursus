@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include <limits.h>
 
-# define FT_GNL_MAX OPEN_MAX
+# define BUFF_GNL_MAX OPEN_MAX
 
 char	*get_next_line(int fd);
 void	ft_bzero(void *s, size_t n);

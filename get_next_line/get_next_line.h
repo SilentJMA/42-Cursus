@@ -15,7 +15,7 @@
 
 # include <stddef.h>
 
-# define FT_GNL_MAX 1
+# define BUFF_GNL_MAX 1
 
 char	*get_next_line(int fd);
 void	ft_bzero(void *s, size_t n);
@@ -23,4 +23,4 @@ size_t	ft_strlen(const char *s);
 void	*ft_memmove(void *s1, const void *s2, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 
-#endif//GET_NEXT_LINE_H
+#endif

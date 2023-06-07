@@ -79,15 +79,15 @@ char	*ft_read_line_fd(char *line, char **buffers, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffers[FT_GNL_MAX];
+	static char	*buffers[BUFF_GNL_MAX];
 
 	if ((fd < 0) || (BUFFER_SIZE < 1))
 		return (NULL);
 	if (read(fd, NULL, 0) < 0)
-		return (ft_clear_buffer(NULL, buffers + fd * (FT_GNL_MAX > 1)));
-	if (buffers[fd * (FT_GNL_MAX > 1)] == NULL)
-		buffers[fd * (FT_GNL_MAX > 1)] = ft_calloc(BUFFER_SIZE, sizeof(char));
-	if (buffers[fd * (FT_GNL_MAX > 1)] == NULL)
+		return (ft_clear_buffer(NULL, buffers + fd * (BUFF_GNL_MAX > 1)));
+	if (buffers[fd * (BUFF_GNL_MAX > 1)] == NULL)
+		buffers[fd * (BUFF_GNL_MAX > 1)] = ft_calloc(BUFFER_SIZE, sizeof(char));
+	if (buffers[fd * (BUFF_GNL_MAX > 1)] == NULL)
 		return (NULL);
-	return (ft_read_line_fd(NULL, buffers + fd * (FT_GNL_MAX > 1), fd));
+	return (ft_read_line_fd(NULL, buffers + fd * (BUFF_GNL_MAX > 1), fd));
 }
