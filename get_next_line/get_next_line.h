@@ -5,28 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 20:12:44 by mjabane           #+#    #+#             */
-/*   Updated: 2022/04/04 19:30:32 by mjabane          ###   ########.fr       */
+/*   Created: 2022/11/10 11:07:32 by mjabane           #+#    #+#             */
+/*   Updated: 2023/06/04 11:12:03 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
+# include <stddef.h>
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
+# define FT_GNL_MAX 1
 
 char	*get_next_line(int fd);
-int		ft_strlen(char *a);
-int		ft_strlenn(char *a);
-char	*ft_strjoin(char *a, char *b);
-int		ft_search(char *a, char c);
-void	ft_cut(char *a);
+void	ft_bzero(void *s, size_t n);
+size_t	ft_strlen(const char *s);
+void	*ft_memmove(void *s1, const void *s2, size_t n);
+void	*ft_calloc(size_t count, size_t size);
 
-#endif
+#endif//GET_NEXT_LINE_H

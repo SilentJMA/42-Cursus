@@ -5,90 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 22:22:04 by mjabane           #+#    #+#             */
-/*   Updated: 2022/04/05 22:22:16 by mjabane          ###   ########.fr       */
+/*   Created: 2022/11/10 11:07:32 by mjabane           #+#    #+#             */
+/*   Updated: 2023/06/04 11:11:42 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include <stdlib.h>
+#include "get_next_line_bonus.h"
 
-int	ft_strlen(char *a)
+void	ft_bzero(void *s, size_t n)
 {
-	int	i;
-
-	i = 0;
-	while (a && a[i])
-		i++;
-	return (i);
+	while (0 < n--)
+		((char *)s)[n] = 0;
 }
 
-int	ft_strlenn(char *a)
+size_t	ft_strlen(const char *s)
 {
-	int	i;
-
-	i = 0;
-	while (a && a[i] && a[i] != '\n')
-		i++;
-	if (a && a[i] && a[i] == '\n')
-		i++;
-	return (i);
+	if (*s)
+		return (1 + ft_strlen(s + 1));
+	return (0);
 }
 
-int	ft_search(char *a, char c)
+void	*ft_memmove(void *s1, const void *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
-	i = 0;
-	while (a[i] && a[i] != c)
-		i++;
-	if (a[i] == c)
-		return (i);
-	return (-1);
-}
-
-void	ft_cut(char *a)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (a[i] && a[i] != '\n')
-		i++;
-	if (a[i] == '\n')
-		i++;
-	while (j < BUFFER_SIZE - i)
+	i = (s1 > s2) * (n - 1);
+	while ((0 <= i) && (i < n) && (s1 != s2))
 	{
-		a[j] = a[j + i];
-		j++;
+		((char *)s1)[i] = ((char *)s2)[i];
+		i += (s1 < s2) - (s1 > s2);
 	}
-	a[j] = '\0';
+	return (s1);
 }
 
-char	*ft_strjoin(char *a, char *b)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int		i;
-	int		j;
-	char	*s;
+	void	*res;
 
-	i = ft_strlen(a);
-	j = ft_strlenn(b);
-	s = malloc(i + j + 1);
-	if (s)
-	{
-		i = -1;
-		j = -1;
-		while (a && a[++i])
-			s[i] = a[i];
-		if (i == -1)
-			i = 0;
-		while (b && b[++j] && b[j] != '\n')
-			s[i + j] = b[j];
-		s[i + j] = b[j];
-		if ((b && b[j] && b[j] == '\n') || j == -1)
-			j++;
-		s[i + j] = '\0';
-	}
-	free(a);
-	return (s);
+	res = malloc(count * size);
+	if (res)
+		ft_bzero(res, count * size);
+	return (res);
 }
