@@ -6,11 +6,12 @@
 #    By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/22 18:27:45 by mjabane           #+#    #+#              #
-#    Updated: 2023/06/07 12:05:36 by mjabane          ###   ########.fr        #
+#    Updated: 2023/06/08 11:46:33 by mjabane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC=gcc
+CC=cc
+RM=rm -rf
 CFLAGS=-Wall -Wextra -Werror
 
 NAME=push_swap
@@ -48,17 +49,17 @@ BOBJCTS=$(BSRCS:%.c=%.o)
 OBJCTS=$(SRCS:%.c=%.o)
 
 $(NAME) : $(OBJCTS)
-		CC $(CFLAGS)  $(OBJCTS) -o $(NAME)
+		@$(CC) $(CFLAGS)  $(OBJCTS) -o $(NAME)
 
 all: $(NAME)
 
 bonus : $(BOBJCTS)
-		CC $(CFLAGS)  $(BOBJCTS) -o push_swap_bonus
+		@$(CC) $(CFLAGS)  $(BOBJCTS) -o push_swap_bonus
 
 clean:
-		rm -f $(OBJCTS) $(BOBJCTS)
+		@$(RM) $(OBJCTS) $(BOBJCTS)
 
 fclean: clean
-		rm -f $(NAME) push_swap_bonus
+		@$(RM) $(NAME) push_swap_bonus
 
 re: fclean all
