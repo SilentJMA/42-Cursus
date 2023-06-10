@@ -6,7 +6,7 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:27:45 by mjabane           #+#    #+#             */
-/*   Updated: 2023/06/07 12:36:38 by mjabane          ###   ########.fr       */
+/*   Updated: 2023/06/10 13:51:29 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 void	message_sent(int i)
 {
 	(void)i;
-	ft_putstr("\033[0;32m******************\n");
-	ft_putstr("\033[0;32m*\033[0;35m MESSAGE Sent!!\033[0;32m *\n");
-	ft_putstr("\033[0;32m******************\n");
+	ft_putstr("MESSAGE Sent!!\n");
 	exit(1);
 }
 
@@ -56,7 +54,7 @@ int	main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		ft_putstr("\033[0;31mERROR : MUST BE 3 Arguments !!\n");
+		ft_putstr("ERROR : MUST BE 3 Arguments !!\n");
 		exit(1);
 	}
 	pid = ft_atoi(av[1]);

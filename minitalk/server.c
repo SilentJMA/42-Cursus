@@ -6,7 +6,7 @@
 /*   By: mjabane <mjabane@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:27:45 by mjabane           #+#    #+#             */
-/*   Updated: 2023/06/07 12:36:53 by mjabane          ###   ########.fr       */
+/*   Updated: 2023/06/10 13:51:58 by mjabane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(void)
 	sig_return = sigaction(SIGUSR2, &sa, NULL);
 	if (sig_return == -1)
 		exit(1);
-	ft_putstr("\033[0;35mPID : ");
+	ft_putstr("PID : ");
 	ft_putnbr(getpid());
 	ft_putchar('\n');
 	while (1)
